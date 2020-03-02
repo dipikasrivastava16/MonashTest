@@ -137,15 +137,19 @@ extension ViewController: UITableViewDelegate {
             return 0
         }
     }
-
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView =  view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.text = headerView.textLabel?.text?.capitalized
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TodayHeaderView")
-            let containerView = view?.viewWithTag(100)
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TodayHeaderView")
+            let containerView = headerView?.viewWithTag(100)
             containerView?.layer.cornerRadius = 5.0
             containerView?.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             
-            let todayView = view?.viewWithTag(101)
+            let todayView = headerView?.viewWithTag(101)
             let gradient = CAGradientLayer()
             gradient.shouldRasterize = true
             gradient.frame = todayView?.bounds ?? .zero
@@ -153,14 +157,14 @@ extension ViewController: UITableViewDelegate {
             gradient.startPoint = CGPoint(x: 0, y: 1)
             gradient.endPoint = CGPoint(x: 1, y: 1)
             todayView?.layer.insertSublayer(gradient, at: 0)
-            todayView?.layer.cornerRadius = 5.0
+            todayView?.layer.cornerRadius = 4.0
             todayView?.layer.maskedCorners = [.layerMaxXMaxYCorner]
             
-            view?.layer.shadowOpacity = 0.18
-            view?.layer.shadowOffset = CGSize(width: 2, height: 2)
-            view?.layer.shadowRadius = 2
-            view?.layer.shadowColor = UIColor.black.cgColor
-            return view
+            headerView?.layer.shadowOpacity = 0.18
+            headerView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+            headerView?.layer.shadowRadius = 4
+            headerView?.layer.shadowColor = UIColor.black.cgColor
+            return headerView
             
         } else {
             return nil

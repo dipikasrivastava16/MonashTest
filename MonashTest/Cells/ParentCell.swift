@@ -13,10 +13,10 @@ class ParentCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+//        // Initialization code
         self.layer.shadowOpacity = 0.18
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowRadius = 2
+        self.layer.shadowRadius = 4
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.masksToBounds = false
 
@@ -34,18 +34,18 @@ class ParentCell: UITableViewCell {
         if row == 0 {
             if section == 0 {
                 if row == totalRow - 1 {
-                    containerView.layer.cornerRadius = 5.0
+                    containerView.layer.cornerRadius = 4.0
                     containerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
                 }
             } else if row == totalRow - 1 {
-                containerView.layer.cornerRadius = 5.0
+                containerView.layer.cornerRadius = 4.0
                 containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
             } else {
-                containerView.layer.cornerRadius = 5.0
+                containerView.layer.cornerRadius = 4.0
                 containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             }
         } else if row == totalRow - 1 {
-            containerView.layer.cornerRadius = 5.0
+            containerView.layer.cornerRadius = 4.0
             containerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         }
         
