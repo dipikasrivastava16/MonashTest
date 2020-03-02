@@ -13,7 +13,6 @@
 		80D99BFB240B243400192732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80D99BF9240B243400192732 /* Main.storyboard */; };
 		80D99BFD240B243600192732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D99BFC240B243600192732 /* Assets.xcassets */; };
 		80D99C00240B243600192732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80D99BFE240B243600192732 /* LaunchScreen.storyboard */; };
-		80D99C0B240B243600192732 /* MonashTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C0A240B243600192732 /* MonashTestTests.swift */; };
 		80D99C18240B649200192732 /* NSDate+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C17240B649200192732 /* NSDate+Utilities.swift */; };
 		80D99C1C240BBB3900192732 /* TodayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D99C1B240BBB3900192732 /* TodayHeaderView.xib */; };
 		80D99C1E240BC0A200192732 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C1D240BC0A200192732 /* CircularView.swift */; };
@@ -26,6 +25,9 @@
 		80D99C30240BED3100192732 /* CarParkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C2F240BED3100192732 /* CarParkCell.swift */; };
 		80D99C32240BED5600192732 /* ShuttleBusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C31240BED5600192732 /* ShuttleBusCell.swift */; };
 		80D99C34240CFED700192732 /* ParentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C33240CFED700192732 /* ParentCell.swift */; };
+		80D99C36240D213400192732 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C35240D213400192732 /* DateTests.swift */; };
+		80D99C38240D262E00192732 /* ShuttleBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C37240D262E00192732 /* ShuttleBusTests.swift */; };
+		80D99C3A240D2A5500192732 /* DshboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D99C39240D2A5500192732 /* DshboardViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +50,6 @@
 		80D99BFF240B243600192732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80D99C01240B243600192732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80D99C06240B243600192732 /* MonashTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonashTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		80D99C0A240B243600192732 /* MonashTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonashTestTests.swift; sourceTree = "<group>"; };
 		80D99C0C240B243600192732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80D99C17240B649200192732 /* NSDate+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Utilities.swift"; sourceTree = "<group>"; };
 		80D99C1B240BBB3900192732 /* TodayHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayHeaderView.xib; sourceTree = "<group>"; };
@@ -62,6 +63,9 @@
 		80D99C2F240BED3100192732 /* CarParkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkCell.swift; sourceTree = "<group>"; };
 		80D99C31240BED5600192732 /* ShuttleBusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuttleBusCell.swift; sourceTree = "<group>"; };
 		80D99C33240CFED700192732 /* ParentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCell.swift; sourceTree = "<group>"; };
+		80D99C35240D213400192732 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
+		80D99C37240D262E00192732 /* ShuttleBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuttleBusTests.swift; sourceTree = "<group>"; };
+		80D99C39240D2A5500192732 /* DshboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DshboardViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +127,10 @@
 		80D99C09240B243600192732 /* MonashTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				80D99C0A240B243600192732 /* MonashTestTests.swift */,
 				80D99C0C240B243600192732 /* Info.plist */,
+				80D99C35240D213400192732 /* DateTests.swift */,
+				80D99C37240D262E00192732 /* ShuttleBusTests.swift */,
+				80D99C39240D2A5500192732 /* DshboardViewModelTests.swift */,
 			);
 			path = MonashTestTests;
 			sourceTree = "<group>";
@@ -274,7 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D99C0B240B243600192732 /* MonashTestTests.swift in Sources */,
+				80D99C38240D262E00192732 /* ShuttleBusTests.swift in Sources */,
+				80D99C3A240D2A5500192732 /* DshboardViewModelTests.swift in Sources */,
+				80D99C36240D213400192732 /* DateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

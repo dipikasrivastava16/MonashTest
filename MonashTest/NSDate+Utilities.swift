@@ -18,17 +18,17 @@ extension Date {
         return weekdays[weekDay-1]
     }
     
-    /// Returns the week number from a  date
+    /// Returns the week number from a  date. 1st week is considered Week 1 not week 0
     /// - Parameter starting: Starting date
     func weekInSemester(starting: Date) -> Int {
         let myCalendar = Calendar(identifier: .gregorian)
         let weekforTodaysDate = myCalendar.component(.weekOfYear, from: self)
         let weekforSemStartDate = myCalendar.component(.weekOfYear, from: starting)
-        return weekforTodaysDate - weekforSemStartDate
+        return weekforTodaysDate - weekforSemStartDate + 1
     }
     
-    /// Today's date in dd/MM format like 12/03 which is 12th March
-    var todayDate: String {
+    /// Returns date in dd/MM format like 12/03 which is 12th March
+    var dateString: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
         return formatter.string(from: self)

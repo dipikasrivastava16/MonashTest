@@ -19,11 +19,11 @@ class DashboardViewModel {
     init() {
         student = Student(name: "Kelly", semesterStartDate: Date.init(timeIntervalSinceNow: -86400*60))
         lectureData = [Lecture(lectureName: "FIT1031 Lecture 01", lectureBy: "Arun Kongaurthu", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 2400), lectureEndTime: Date(timeIntervalSinceNow: 2400+3600)),
-        Lecture(lectureName: "FIT1075 Tutorial 11", lectureBy: "Jarrod Knibbe", lectureAddress: "S3, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*2), lectureEndTime: Date(timeIntervalSinceNow: 60*60*2+1800)),
-        Lecture(lectureName: "FIT1078 Laboratory 08", lectureBy: "Akshay Sapra", lectureAddress: "144, 14 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*3), lectureEndTime: Date(timeIntervalSinceNow: 60*60*3+3600)),
-        Lecture(lectureName: "test Lecture", lectureBy: "Deepika Srivastava", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: -60*60*5), lectureEndTime: Date(timeIntervalSinceNow: -60*60*5+3600)),
-        Lecture(lectureName: "Test Lecture1", lectureBy: "John Doe", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*4), lectureEndTime: Date(timeIntervalSinceNow: 60*60*4+3600)),
-        Lecture(lectureName: "Test Lecture2", lectureBy: "Phillip Doe", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*5), lectureEndTime: Date(timeIntervalSinceNow: 60*60*5+3600))]
+                       Lecture(lectureName: "FIT1075 Tutorial 11", lectureBy: "Jarrod Knibbe", lectureAddress: "S3, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*2), lectureEndTime: Date(timeIntervalSinceNow: 60*60*2+1800)),
+                       Lecture(lectureName: "FIT1078 Laboratory 08", lectureBy: "Akshay Sapra", lectureAddress: "144, 14 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*3), lectureEndTime: Date(timeIntervalSinceNow: 60*60*3+3600)),
+                       Lecture(lectureName: "test Lecture", lectureBy: "Deepika Srivastava", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: -60*60*5), lectureEndTime: Date(timeIntervalSinceNow: -60*60*5+3600)),
+                       Lecture(lectureName: "Test Lecture1", lectureBy: "John Doe", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*4), lectureEndTime: Date(timeIntervalSinceNow: 60*60*4+3600)),
+                       Lecture(lectureName: "Test Lecture2", lectureBy: "Phillip Doe", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*5), lectureEndTime: Date(timeIntervalSinceNow: 60*60*5+3600))]
         carpark = [CarPark(name: "Clayton Live Feed", number: 645),
         CarPark(name: "Clayton Live Feed1", number: 600),
         CarPark(name: "Clayton Live Feed2", number: 700)]
@@ -37,15 +37,18 @@ class DashboardViewModel {
     }
     
     
-    /// Filters next  'number' of lectures today. It will filter out tomorrows lecture if their start time is greater than 23:59:59
-    /// - Parameter number: number of lecture
-    func getNextlectures(number: Int) -> [Lecture] {
+    /// Filters next  'number' of lectures on a given date.
+    /// - Parameters:
+    ///   - number: number of lecture
+    ///   - onDate: date on which lectures have to be extracted
+    func getNextlectures(number: Int, onDate: Date = Date()) -> [Lecture] {
         var lectureCount = number
+        // The below condition is only due to mockdata
         if number > 5 {
             print("The maximum number for lecture supported is 5 with current mock data")
             lectureCount = 5
         }
-        let currentDate = Date()
+        let currentDate = onDate
         let earlyMorning = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: currentDate)!
         let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: earlyMorning)!
         let range = currentDate...nextDay
@@ -59,15 +62,18 @@ class DashboardViewModel {
     }
     
     
-    /// Filters next  'number' of shuttle buses today.
-    /// - Parameter number: number of buses
-    func getNextShuttleBuses(number: Int) -> [ShuttleBus] {
+    /// Filters next  'number' of shuttle buses on the given date.
+    /// - Parameters:
+    ///   - number: number of buses
+    ///   - onDate: date on which buses needs to be listed
+    func getNextShuttleBuses(number: Int, onDate: Date = Date()) -> [ShuttleBus] {
         var count = number
+        // The below condition is only due to mockdata
         if number > 5 {
             print("The maximum number for shuttle buses supported is 5 with current mock data")
             count = 5
         }
-        let currentDate = Date()
+        let currentDate = onDate
         let earlyMorning = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: currentDate)!
         let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: earlyMorning)!
         let range = currentDate...nextDay

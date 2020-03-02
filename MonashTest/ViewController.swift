@@ -39,7 +39,7 @@ private extension ViewController {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 5.0
         let date = Date()
-        let subText = NSAttributedString(string: "\n\(date.todayDate) \(date.dayofTheWeek), Week \(date.weekInSemester(starting: dashboardModel.student.semesterStartDate))", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        let subText = NSAttributedString(string: "\n\(date.dateString) \(date.dayofTheWeek), Week \(date.weekInSemester(starting: dashboardModel.student.semesterStartDate))", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         greeting.append(subText)
         greeting.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, greeting.length))
         greetingLabel.attributedText = greeting

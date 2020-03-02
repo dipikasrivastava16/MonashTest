@@ -28,8 +28,10 @@ extension ShuttleBus {
         let difference = abs(Date().timeIntervalSince(startTime)/60)
         if difference < 1 {
             return "< 1 min"
+        } else if difference == 1 {
+            return "1 min"
         } else {
-            return "\(Int(difference)) min"
+            return "\(Int(round(difference))) mins"
         }
     }
 }
