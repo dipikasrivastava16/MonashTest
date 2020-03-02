@@ -78,4 +78,5 @@ class DashboardViewModel {
         }
         return Array(carpark[0..<count])
     }
+    
 }

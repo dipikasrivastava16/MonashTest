@@ -101,7 +101,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="containerView" destination="OU6-Ig-c1D" id="ogr-d0-Jt5"/>
+                                            <outlet property="containerView" destination="OU6-Ig-c1D" id="VdS-3B-07e"/>
                                             <outlet property="endTime" destination="TJe-rQ-XRr" id="pHK-qd-GjY"/>
                                             <outlet property="lectureAddress" destination="myz-gJ-6zx" id="wLv-Wv-PfS"/>
                                             <outlet property="lectureBy" destination="JFf-fj-4Jl" id="DJA-hc-3wv"/>
@@ -223,7 +223,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="containerView" destination="lj2-7R-yjy" id="USc-z6-8gP"/>
+                                            <outlet property="containerView" destination="lj2-7R-yjy" id="sfe-ok-akZ"/>
                                             <outlet property="itemName" destination="eEI-eN-7bc" id="aUo-gP-JzP"/>
                                             <outlet property="numberValue" destination="U7S-UC-Xri" id="wdG-gt-55t"/>
                                         </connections>
@@ -287,7 +287,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="containerView" destination="nUg-cd-WOR" id="xwb-ip-HE3"/>
+                                            <outlet property="containerView" destination="nUg-cd-WOR" id="rQN-DY-Q5v"/>
                                             <outlet property="destination" destination="RAa-YT-dpX" id="5uj-Zt-13X"/>
                                             <outlet property="duration" destination="Lpl-u0-S2y" id="bjw-mI-g0d"/>
                                             <outlet property="start" destination="yQS-X2-q8j" id="PET-lr-zSZ"/>

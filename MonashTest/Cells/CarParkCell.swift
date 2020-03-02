@@ -8,11 +8,10 @@
 
 import UIKit
 
-class CarParkCell: UITableViewCell {
+class CarParkCell: ParentCell {
 
     @IBOutlet weak var numberValue: UILabel!
     @IBOutlet weak var itemName: UILabel!
-    @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,10 +22,10 @@ class CarParkCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func configureCell(cellModel: CarPark) {
-        itemName.text = cellModel.name
-        numberValue.text = "\(cellModel.number)"
+    override func configureCell(cellModel: Any) {
+        if let model = cellModel as? CarPark {
+            itemName.text = model.name
+            numberValue.text = "\(model.number)"
+        }
     }
-
-
 }

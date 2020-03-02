@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ClassTableViewCell: UITableViewCell {
+class ClassTableViewCell: ParentCell {
 
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var lectureAddress: UILabel!
     @IBOutlet weak var lectureBy: UILabel!
     @IBOutlet weak var lecturename: UILabel!
-    @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,12 +25,14 @@ class ClassTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func configureCell(cellModel: Lecture) {
-        lecturename.text = cellModel.lectureName
-        lectureBy.text = cellModel.lectureBy
-        lectureAddress.text = cellModel.lectureAddress
-        startTime.text = cellModel.startTime
-        endTime.text = cellModel.endTime
+    override func configureCell(cellModel: Any) {
+        if let model = cellModel as? Lecture {
+            lecturename.text = model.lectureName
+            lectureBy.text = model.lectureBy
+            lectureAddress.text = model.lectureAddress
+            startTime.text = model.startTime
+            endTime.text = model.endTime
+        }
     }
 
 }

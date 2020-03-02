@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ShuttleBusCell: UITableViewCell {
+class ShuttleBusCell: ParentCell {
 
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var destination: UILabel!
     @IBOutlet weak var start: UILabel!
-    @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,10 +23,12 @@ class ShuttleBusCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func configureCell(cellModel: ShuttleBus) {
-        start.text = cellModel.start
-        destination.text = cellModel.destination
-        duration.text = cellModel.dueIn
+    override func configureCell(cellModel: Any) {
+        if let model = cellModel as? ShuttleBus {
+            start.text = model.start
+            destination.text = model.destination
+            duration.text = model.dueIn
+        }
     }
 
 }

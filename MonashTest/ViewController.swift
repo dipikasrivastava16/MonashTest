@@ -17,7 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         self.tableView.backgroundColor = self.navigationController?.navigationBar.barTintColor
-        dashBoardData = [dashboardModel.getNextlectures(number: 3), dashboardModel.getNextLiveFeed(number: 2), dashboardModel.getNextShuttleBuses(number: 2)]
+        dashBoardData = [dashboardModel.getNextlectures(number: 3), dashboardModel.getNextLiveFeed(number: 1), dashboardModel.getNextShuttleBuses(number: 2)]
+        self.tableView.register(UINib(nibName: "TodayHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TodayHeaderView")
         // Do any additional setup after loading the view.
     }
 
@@ -74,55 +75,22 @@ extension ViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numOfRowsInSection = tableView.numberOfRows(inSection: indexPath.section)
+        let cellHeight = self.tableView(tableView, heightForRowAt: indexPath)
+        let cell: ParentCell
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ClassCell") as! ClassTableViewCell
-            if indexPath.row != numOfRowsInSection - 1 {
-                let bottomBorder = CALayer()
-                bottomBorder.frame = CGRect(x: cell.containerView.frame.origin.x + 15, y: tableView.rowHeight-1, width:cell.containerView.frame.size.width - 30, height: 1.0)
-                bottomBorder.backgroundColor = UIColor(white: 0.8, alpha: 1.0).cgColor
-                cell.contentView.layer.addSublayer(bottomBorder)
-            }
-            
-            if indexPath.row == 0 && indexPath.row == numOfRowsInSection - 1 {
-                cell.containerView.layer.cornerRadius = 5.0
-                cell.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
-                
-            } else if indexPath.row == 0 {
-                cell.containerView.layer.cornerRadius = 5.0
-                cell.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-                
-            } else if indexPath.row == numOfRowsInSection - 1 {
-                cell.containerView.layer.cornerRadius = 5.0
-                cell.containerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-            }
-            cell.configureCell(cellModel: (dashBoardData?[indexPath.section] as! Array)[indexPath.row])
-            return cell
+            cell = tableView.dequeueReusableCell(withIdentifier: "ClassCell") as! ClassTableViewCell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CarParkCell") as! CarParkCell
-            if indexPath.row != numOfRowsInSection - 1 {
-                let bottomBorder = CALayer()
-                bottomBorder.frame = CGRect(x: cell.containerView.frame.origin.x + 15, y: self.tableView(tableView, heightForRowAt: indexPath)-1, width:cell.containerView.frame.size.width - 30, height: 1.0)
-                bottomBorder.backgroundColor = UIColor(white: 0.8, alpha: 1.0).cgColor
-                cell.contentView.layer.addSublayer(bottomBorder)
-            }
-            cell.configureCell(cellModel: (dashBoardData?[indexPath.section] as! Array)[indexPath.row])
-            return cell
+            cell = tableView.dequeueReusableCell(withIdentifier: "CarParkCell") as! CarParkCell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ShuttleBusCell") as! ShuttleBusCell
-            if indexPath.row != numOfRowsInSection - 1 {
-                let bottomBorder = CALayer()
-                bottomBorder.frame = CGRect(x: cell.containerView.frame.origin.x + 15, y: self.tableView(tableView, heightForRowAt: indexPath)-1, width:cell.containerView.frame.size.width - 30, height: 1.0)
-                bottomBorder.backgroundColor = UIColor(white: 0.8, alpha: 1.0).cgColor
-                cell.contentView.layer.addSublayer(bottomBorder)
-            }
-            cell.configureCell(cellModel: (dashBoardData?[indexPath.section] as! Array)[indexPath.row])
-            return cell
+            cell = tableView.dequeueReusableCell(withIdentifier: "ShuttleBusCell") as! ShuttleBusCell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CarParkCell")
-            return cell!
+            fatalError("How do you get here?")
         }
-        
+        cell.addSeparater(row: indexPath.row, totalRows: numOfRowsInSection, cellHeight: cellHeight)
+        cell.configureCorner(row: indexPath.row, section: indexPath.section, totalRow: numOfRowsInSection)
+        cell.configureCell(cellModel: (dashBoardData?[indexPath.section] as! Array)[indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,5 +125,33 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 57
+        } else {
+            return 0
+        }
+    }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TodayHeaderView")
+            let containerView = view?.viewWithTag(100)
+            containerView?.layer.cornerRadius = 5.0
+            containerView?.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            
+            let todayView = view?.viewWithTag(101)
+            let gradient = CAGradientLayer()
+            gradient.shouldRasterize = true
+            gradient.frame = todayView?.bounds ?? .zero
+            gradient.colors = [UIColor(red: 242/255, green: 54/255.0, blue: 49/255.0, alpha: 1.0).cgColor, UIColor.systemRed.cgColor]
+            gradient.startPoint = CGPoint(x: 0, y: 0)
+            gradient.endPoint = CGPoint(x: 1, y: 1)
+            todayView?.layer.insertSublayer(gradient, at: 0)
+            return view
+            
+        } else {
+            return nil
+        }
+    }
 }
