@@ -8,22 +8,21 @@
 
 import Foundation
 
+/// Model defining Lecture
 struct Lecture {
+    
+    /// Lecture Name
     var lectureName: String
+    
+    /// Lecture Taken By
     var lectureBy: String
+    
+    /// Address where lecture is taken
     var lectureAddress: String
+    
+    /// Lecture start time
     var lectureStartTime: Date
+    
+    /// Lecture end time
     var lectureEndTime: Date                   
-}
-extension Lecture {
-    var startTime: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm a"
-        return formatter.string(from: lectureStartTime)
-    }
-    var endTime: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm a"
-        return formatter.string(from: lectureEndTime)
-    }
 }

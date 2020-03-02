@@ -8,7 +8,12 @@
 
 import UIKit
 
+/// Model Representing Student
 struct Student {
+    
+    /// Name of the student
     let name: String
+    
+    /// Date of Semester Start Date
     let semesterStartDate: Date
 }

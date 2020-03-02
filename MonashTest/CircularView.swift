@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// Sub Class of UIView to create Circular View
 class CircularView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()

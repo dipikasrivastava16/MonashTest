@@ -8,11 +8,14 @@
 
 import Foundation
 
+/// Model class to the ViewController
 class DashboardViewModel {
     var student: Student
     var lectureData: [Lecture]
     var carpark: [CarPark]
     var shuttleBus: [ShuttleBus]
+    
+    /// Just initializes mock data
     init() {
         student = Student(name: "Kelly", semesterStartDate: Date.init(timeIntervalSinceNow: -86400*60))
         lectureData = [Lecture(lectureName: "FIT1031 Lecture 01", lectureBy: "Arun Kongaurthu", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 2400), lectureEndTime: Date(timeIntervalSinceNow: 2400+3600)),
@@ -33,6 +36,9 @@ class DashboardViewModel {
                       ShuttleBus(start: "Clayton", destination: "City", startTime: Date(timeIntervalSinceNow: -120))]
     }
     
+    
+    /// Filters next  'number' of lectures today. It will filter out tomorrows lecture if their start time is greater than 23:59:59
+    /// - Parameter number: number of lecture
     func getNextlectures(number: Int) -> [Lecture] {
         var lectureCount = number
         if number > 5 {
@@ -52,6 +58,9 @@ class DashboardViewModel {
         return Array(data[0..<lectureCount])
     }
     
+    
+    /// Filters next  'number' of shuttle buses today.
+    /// - Parameter number: number of buses
     func getNextShuttleBuses(number: Int) -> [ShuttleBus] {
         var count = number
         if number > 5 {
@@ -70,6 +79,9 @@ class DashboardViewModel {
         }
         return Array(data[0..<count])
     }
+    
+    /// Get next 'number' of line Feed
+    /// - Parameter number: number of feeds
     func getNextLiveFeed(number: Int) -> [CarPark] {
         var count = number
         if number > 3 {

@@ -30,8 +30,8 @@ class ClassTableViewCell: ParentCell {
             lecturename.text = model.lectureName
             lectureBy.text = model.lectureBy
             lectureAddress.text = model.lectureAddress
-            startTime.text = model.startTime
-            endTime.text = model.endTime
+            startTime.text = model.lectureStartTime.timeString
+            endTime.text = model.lectureEndTime.timeString
         }
     }
 

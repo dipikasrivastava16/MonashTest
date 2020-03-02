@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct CarPark {
     var name: String
     var number: Int

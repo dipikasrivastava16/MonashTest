@@ -11,8 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var dashboardModel = DashboardViewModel()
-    var dashBoardData: Array<Any>?
+    private var dashboardModel = DashboardViewModel()
+    private var dashBoardData: Array<Any>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -24,8 +25,10 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController {
-    private func configureNavigationBar() {
+private extension ViewController {
+    
+    /// Configures the navigation Bar
+    func configureNavigationBar() {
 
         // left Navigation Bar
         let greetingLabel = UILabel()
@@ -68,6 +71,7 @@ extension ViewController {
     }
 }
 
+// MARK:- UITableViewDataSource
 extension ViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -124,6 +128,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
+// MARK:- UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -132,7 +137,7 @@ extension ViewController: UITableViewDelegate {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TodayHeaderView")
@@ -144,10 +149,17 @@ extension ViewController: UITableViewDelegate {
             let gradient = CAGradientLayer()
             gradient.shouldRasterize = true
             gradient.frame = todayView?.bounds ?? .zero
-            gradient.colors = [UIColor(red: 242/255, green: 54/255.0, blue: 49/255.0, alpha: 1.0).cgColor, UIColor.systemRed.cgColor]
-            gradient.startPoint = CGPoint(x: 0, y: 0)
+            gradient.colors = [UIColor(red: 235/255, green: 120/255.0, blue: 103/255.0, alpha: 1.0).cgColor, UIColor.systemRed.cgColor]
+            gradient.startPoint = CGPoint(x: 0, y: 1)
             gradient.endPoint = CGPoint(x: 1, y: 1)
             todayView?.layer.insertSublayer(gradient, at: 0)
+            todayView?.layer.cornerRadius = 5.0
+            todayView?.layer.maskedCorners = [.layerMaxXMaxYCorner]
+            
+            view?.layer.shadowOpacity = 0.18
+            view?.layer.shadowOffset = CGSize(width: 2, height: 2)
+            view?.layer.shadowRadius = 2
+            view?.layer.shadowColor = UIColor.black.cgColor
             return view
             
         } else {
