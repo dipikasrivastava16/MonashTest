@@ -17,6 +17,11 @@ class DashboardViewModel {
     
     /// Just initializes mock data
     init() {
+        
+        /* TODO: Can you create an alternative option that allows a user to randomly vary the number of rows in each
+         * section
+         **/
+        
         student = Student(name: "Kelly", semesterStartDate: Date.init(timeIntervalSinceNow: -86400*60))
         lectureData = [Lecture(lectureName: "FIT1031 Lecture 01", lectureBy: "Arun Kongaurthu", lectureAddress: "S4, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 2400), lectureEndTime: Date(timeIntervalSinceNow: 2400+3600)),
                        Lecture(lectureName: "FIT1075 Tutorial 11", lectureBy: "Jarrod Knibbe", lectureAddress: "S3, 13 College Walk, Clayton", lectureStartTime: Date(timeIntervalSinceNow: 60*60*2), lectureEndTime: Date(timeIntervalSinceNow: 60*60*2+1800)),
