@@ -49,6 +49,10 @@ class ParentCell: UITableViewCell {
             containerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         }
         
+        /* TODO: What alternative solution you can suggest that would resolve
+         * the shadow artefact whilst still retaining the shadow offset?
+         **/
+        
         if row != totalRow - 1 {
             self.clipsToBounds = true
         }
